@@ -1,0 +1,9 @@
+FROM centos:8
+ENV OS centos
+RUN yum update -y && yum install -y maven rpm-build git
+
+WORKDIR /usr/repo
+
+COPY build-ambari.sh /usr/repo
+
+CMD ["/usr/repo/build-ambari.sh"]
