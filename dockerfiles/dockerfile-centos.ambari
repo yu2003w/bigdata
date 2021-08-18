@@ -4,6 +4,8 @@ RUN yum update -y && yum install -y maven rpm-build git
 
 WORKDIR /usr/repo
 
+RUN groupadd -r -g 1001 ambari && useradd -r -g ambari -u 1001 ambari && chown ambari:ambari /usr/repo
+USER ambari
 COPY build-ambari.sh /usr/repo
 
 CMD ["/usr/repo/build-ambari.sh"]

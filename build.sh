@@ -56,7 +56,7 @@ fi
 
 cd ../
 
-docker run --rm --name build-ambari -v /root/.m2/:/root/.m2 \
+docker run --rm --name build-ambari -v $(pwd)/.m2/:/home/ambari/.m2 \
 	-v $(pwd)/apache-ambari-2.7.5-src:/usr/repo/apache-ambari-2.7.5-src \
 	${IMAGE}:2.7.5 > ambari.log 2>&1 &
 
