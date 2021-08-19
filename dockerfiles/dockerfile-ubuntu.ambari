@@ -4,7 +4,8 @@ WORKDIR /usr/repo
 RUN apt-get update -y && apt-get install wget maven git -y \
     && apt-get autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -r -g 1001 ambari && useradd -r -g ambari -u 1001 ambari && chown ambari:ambari /usr/repo
+RUN groupadd -r -g 1009 ambari && useradd -r -g ambari -u 1009 ambari && mkdir -p /home/ambari \
+    && chown ambari:ambari /usr/repo /home/ambari
 USER ambari
 COPY "build-ambari.sh" /usr/repo/
 CMD ["/usr/repo/build-ambari.sh"]
